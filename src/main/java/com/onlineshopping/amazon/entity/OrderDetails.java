@@ -14,13 +14,7 @@ public class OrderDetails {
     @Id
     int orderDetailId;
     @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "orderId", insertable = false, updatable = false)
-    Order order;
-    int orderId;
-    @ManyToOne
-    @JoinColumn(name = "productId", insertable = false, updatable = false)
+    @JoinColumn(name = "productId")
     Product product;
-    int productId;
     int quantity;
 }

@@ -17,18 +17,13 @@ import javax.persistence.*;
 public class Customer {
 
 
+    int postalCode;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
-
-
     private String customerName;
-
     private String address;
-
     private String city;
-
-    int postalCode;
     private String country;
 
 

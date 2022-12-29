@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.UnexpectedTypeException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,11 @@ public class ControllerAdvisory {
     @ExceptionHandler(UnexpectedTypeException.class)
     ResponseEntity<String> UnExpectedTypeException(UnexpectedTypeException unexpectedTypeException) {
         return new ResponseEntity<>(unexpectedTypeException.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SQLException.class)
+    ResponseEntity<String> SQLException(SQLException sqlException){
+        return new ResponseEntity<>(sqlException.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
 }

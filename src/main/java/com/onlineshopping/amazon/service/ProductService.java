@@ -34,9 +34,8 @@ public class ProductService {
     }
 
     public com.onlineshopping.amazon.vo.Product getById(int pid) {
-        com.onlineshopping.amazon.vo.Product p = getVoProduct(productRepository.findById(pid).
+        return getVoProduct(productRepository.findById(pid).
                 orElseThrow(() -> new ProductException("Product Not Found with ProductId :" + pid)));
-        return p;
 
     }
 
@@ -63,9 +62,11 @@ public class ProductService {
     }
 
     public String deleteProduct(int pid) {
+        System.out.println("in delete product");
         if (productRepository.findById(pid).isEmpty()) {
             throw new ProductException("Product Not Found with ProductId :" + pid);
         } else {
+            System.out.println("inside else");
             productRepository.deleteById(pid);
             return "Product Deleted Having ProductId: " + pid;
         }

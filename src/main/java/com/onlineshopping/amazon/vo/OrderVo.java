@@ -22,6 +22,6 @@ public class OrderVo {
     @NotNull(message = "Shipper Id is required")
     private int shipperID;
     @NotNull(message = "OrderVo detail is required")
-    private List<OrderDetailsVo> orderDetailVos;
+    private List<OrderDetailsVo> orderDetails;
 
 }
