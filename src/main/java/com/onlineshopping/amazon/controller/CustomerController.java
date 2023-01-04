@@ -35,4 +35,8 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.updateCustomer(customer), HttpStatus.OK);
     }
 
+    @DeleteMapping("v1/customer/{cid}")
+    ResponseEntity<String> deleteCustomer(@PathVariable Integer cid){
+        return new ResponseEntity<>(customerService.deleteCustomer(cid),HttpStatus.OK);
+    }
 }

@@ -38,11 +38,21 @@ public class CustomerService {
         }
     }
 
+    public String deleteCustomer(Integer cid) {
+        customerRepository.delete(customerRepository.findById(cid).orElseThrow(()
+                -> new CustomerException("Customer Not Found with Customer Id: " + cid)));
+        return ("Customer Deleted with Customer Id: " + cid);
+    }
+
     public Customer getEntityCustomer(com.onlineshopping.amazon.vo.Customer customer) {
-        return Customer.builder().customerName(customer.getCustomerName()).address(customer.getAddress()).city(customer.getCity()).postalCode(customer.getPostalCode()).country(customer.getCountry()).build();
+        return Customer.builder().customerName(customer.getCustomerName())
+                .address(customer.getAddress()).city(customer.getCity()).postalCode(customer.getPostalCode()).
+                country(customer.getCountry()).build();
     }
 
     public com.onlineshopping.amazon.vo.Customer getVoCustomer(Customer customer) {
-        return com.onlineshopping.amazon.vo.Customer.builder().customerId(customer.getCustomerId()).customerName(customer.getCustomerName()).address(customer.getAddress()).city(customer.getCity()).postalCode(customer.getPostalCode()).country(customer.getCountry()).build();
+        return com.onlineshopping.amazon.vo.Customer.builder().customerId(customer.getCustomerId()).
+                customerName(customer.getCustomerName()).address(customer.getAddress()).city(customer.getCity()).
+                postalCode(customer.getPostalCode()).country(customer.getCountry()).build();
     }
 }

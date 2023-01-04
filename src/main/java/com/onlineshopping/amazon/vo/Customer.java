@@ -22,7 +22,7 @@ public class Customer implements Serializable {
     Integer postalCode;
     private Integer customerId;
     @NotNull(message = "Customer name cannot be null")
-    @Pattern(regexp = "[a-zA-Z]* [a-zA-Z]*", message = "Must not have digits and special character")
+    @Pattern(regexp = "[a-zA-Z ]*", message = "Name should not have digits and special character")
     private String customerName;
     @NotNull(message = "Address cannot be null")
     private String address;
