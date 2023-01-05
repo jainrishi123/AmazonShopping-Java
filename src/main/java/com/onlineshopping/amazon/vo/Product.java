@@ -25,6 +25,9 @@ public class Product {
     private Integer supplierId;
     @NotBlank(message = "productName cannot be empty")
     private String productName;
+    @NotBlank(message = "productName cannot be empty")
+    String productImage;
+
 
 
 }

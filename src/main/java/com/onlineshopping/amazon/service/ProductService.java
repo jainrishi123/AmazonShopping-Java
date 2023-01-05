@@ -62,11 +62,9 @@ public class ProductService {
     }
 
     public String deleteProduct(int pid) {
-        System.out.println("in delete product");
         if (productRepository.findById(pid).isEmpty()) {
             throw new ProductException("Product Not Found with ProductId :" + pid);
         } else {
-            System.out.println("inside else");
             productRepository.deleteById(pid);
             return "Product Deleted Having ProductId: " + pid;
         }
@@ -74,13 +72,13 @@ public class ProductService {
 
     public com.onlineshopping.amazon.vo.Product getVoProduct(Product p1) {
         return com.onlineshopping.amazon.vo.Product.builder().productID(p1.getProductID()).productName(p1.getProductName()).
-                price(p1.getPrice()).unit(p1.getUnit()).supplierId(p1.getSupplierId()).build();
+                price(p1.getPrice()).unit(p1.getUnit()).supplierId(p1.getSupplierId()).productImage(p1.getProductImage()).build();
     }
 
 
     public com.onlineshopping.amazon.entity.Product getEntityProduct(com.onlineshopping.amazon.vo.Product p1) {
         return com.onlineshopping.amazon.entity.Product.builder().productID(p1.getProductID()).productName(p1.getProductName()).
-                unit(p1.getUnit()).price(p1.getPrice()).supplier(supplierRepository.findById(p1.getSupplierId()).
+                unit(p1.getUnit()).productImage(p1.getProductImage()).price(p1.getPrice()).supplier(supplierRepository.findById(p1.getSupplierId()).
                         orElseThrow(() -> new SupplierException("Supplier Not Found With SupplierId: " + p1.getSupplierId()))).supplierId(p1.getSupplierId()).build();
     }
 }

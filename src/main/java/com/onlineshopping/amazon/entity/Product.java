@@ -23,6 +23,7 @@ public class Product {
     Supplier supplier;
     int unit, price, supplierId;
     String productName;
+    String productImage;
 
 
 }
