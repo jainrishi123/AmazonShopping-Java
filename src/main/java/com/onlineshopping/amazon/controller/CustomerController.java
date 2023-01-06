@@ -25,6 +25,13 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.OK);
     }
 
+
+    @GetMapping("/v1/customer/{cid}")
+    ResponseEntity<Customer> getCustomerById(@PathVariable int cid){
+        return new ResponseEntity<>(customerService.getCustomerbyId(cid),HttpStatus.OK);
+
+    }
+
     @PostMapping("/v1/customer")
     ResponseEntity<String> saveCustomer(@RequestBody @Valid Customer customer) {
         return new ResponseEntity<>(customerService.saveCustomer(customer), HttpStatus.OK);

@@ -44,6 +44,12 @@ public class CustomerService {
         return ("Customer Deleted with Customer Id: " + cid);
     }
 
+    public com.onlineshopping.amazon.vo.Customer getCustomerbyId(int cid){
+        return getVoCustomer(customerRepository.findById(cid).orElseThrow(()->new CustomerException(
+                "Customer not Found with CustomerId: "+cid
+        )));
+    }
+
     public Customer getEntityCustomer(com.onlineshopping.amazon.vo.Customer customer) {
         return Customer.builder().customerName(customer.getCustomerName())
                 .address(customer.getAddress()).city(customer.getCity()).postalCode(customer.getPostalCode()).
