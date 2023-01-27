@@ -33,7 +33,9 @@ public class CustomerService {
         if (customerRepository.findById(customer.getCustomerId()).isEmpty()) {
             throw new CustomerException("Customer does not exist with CustomerId: " + customer.getCustomerId());
         } else {
-            customerRepository.save(getEntityCustomer(customer));
+            Customer cus=getEntityCustomer(customer);
+            cus.setCustomerId(customer.getCustomerId());
+            customerRepository.save(cus);
             return "Customer Updated";
         }
     }

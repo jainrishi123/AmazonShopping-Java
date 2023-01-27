@@ -76,8 +76,8 @@ public class ProductService {
     }
 
 
-    public com.onlineshopping.amazon.entity.Product getEntityProduct(com.onlineshopping.amazon.vo.Product p1) {
-        return com.onlineshopping.amazon.entity.Product.builder().productID(p1.getProductID()).productName(p1.getProductName()).
+    public Product getEntityProduct(com.onlineshopping.amazon.vo.Product p1) {
+        return Product.builder().productID(p1.getProductID()).productName(p1.getProductName()).
                 unit(p1.getUnit()).productImage(p1.getProductImage()).price(p1.getPrice()).supplier(supplierRepository.findById(p1.getSupplierId()).
                         orElseThrow(() -> new SupplierException("Supplier Not Found With SupplierId: " + p1.getSupplierId()))).supplierId(p1.getSupplierId()).build();
     }

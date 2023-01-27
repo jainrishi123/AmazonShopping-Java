@@ -1,11 +1,10 @@
 package com.onlineshopping.amazon.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.List;
+//import javax.persistence.*;
 
 
 @Data
